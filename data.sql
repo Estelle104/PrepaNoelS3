@@ -27,7 +27,7 @@ CREATE TABLE tbTrajets(
             montantCarburant DOUBLE
         );
 
-        CREATE TABLE tbUsrers(
+        CREATE TABLE tbUsers(
             id INT PRIMARY KEY AUTO_INCREMENT,
             nomUser VARCHAR(50),
             motDePasse VARCHAR(100),
