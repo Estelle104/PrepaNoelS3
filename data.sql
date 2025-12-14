@@ -6,7 +6,7 @@ CREATE TABLE tbTrajets(
             id INT PRIMARY KEY AUTO_INCREMENT,
             pointDepart VARCHAR(75),
             pointArrive VARCHAR(75),
-            distance DOUBLE,
+            distance DOUBLE
         );
 
         CREATE TABLE tbChauffeurs(
@@ -28,14 +28,14 @@ CREATE TABLE tbTrajets(
             idVehicule INT,
             idTrajet INT,
             montantRecette DOUBLE,
-            montantCarburant DOUBLE
+            montantCarburant DOUBLE,
+            panne VARCHAR(10)
         );
 
         CREATE TABLE tbUsers(
             id INT PRIMARY KEY AUTO_INCREMENT,
             nomUser VARCHAR(50),
-            motDePasse VARCHAR(100),
-            roleUser VARCHAR(20)
+            mdp VARCHAR(10)
         );
 
         CREATE TABLE tbVersements(
@@ -82,17 +82,17 @@ INSERT INTO tbVehicules (nomVehicule, isDisponible) VALUES
 ('Mitsubishi Fuso Tana-009', true),
 ('Isuzu NPR Tana-010', true);
 
-INSERT INTO tbMvtTrajet (dateDebut, dateFin, idChauffeur, idVehicule, idTrajet, montantRecette, montantCarburant) VALUES
-('2024-01-15 06:00:00', '2024-01-15 13:30:00', 1, 1, 1, 1200000, 250000),
-('2024-01-16 07:00:00', '2024-01-16 11:45:00', 2, 3, 2, 850000, 180000),
-('2024-01-17 05:30:00', '2024-01-17 20:00:00', 3, 4, 3, 2100000, 420000),
-('2024-01-18 08:00:00', '2024-01-18 16:30:00', 4, 6, 4, 1500000, 320000),
-('2024-01-19 06:30:00', '2024-01-19 22:00:00', 5, 7, 5, 2800000, 580000),
-('2024-01-20 07:30:00', '2024-01-20 12:15:00', 6, 9, 1, 1250000, 260000),
-('2024-01-21 06:00:00', '2024-01-21 11:30:00', 7, 10, 2, 880000, 190000),
-('2024-01-22 05:00:00', '2024-01-22 19:45:00', 8, 1, 3, 2050000, 410000),
-('2024-01-23 08:30:00', '2024-01-23 17:00:00', 9, 3, 4, 1550000, 330000),
-('2024-01-24 07:00:00', '2024-01-25 00:30:00', 10, 4, 5, 2750000, 570000);
+INSERT INTO tbMvtTrajet (dateDebut, dateFin, idChauffeur, idVehicule, idTrajet, montantRecette, montantCarburant, panne) VALUES
+('2024-01-15 06:00:00', '2024-01-15 13:30:00', 1, 1, 1, 1200000, 250000,''),
+('2024-01-16 07:00:00', '2024-01-16 11:45:00', 2, 3, 2, 850000, 180000,''),
+('2024-01-17 05:30:00', '2024-01-17 20:00:00', 3, 4, 3, 2100000, 420000,''),
+('2024-01-18 08:00:00', '2024-01-18 16:30:00', 4, 6, 4, 1500000, 320000,''),
+('2024-01-19 06:30:00', '2024-01-19 22:00:00', 5, 7, 5, 2800000, 580000,''),
+('2024-01-20 07:30:00', '2024-01-20 12:15:00', 6, 9, 1, 1250000, 260000,''),
+('2024-01-21 06:00:00', '2024-01-21 11:30:00', 7, 10, 2, 880000, 190000,''),
+('2024-01-22 05:00:00', '2024-01-22 19:45:00', 8, 1, 3, 2050000, 410000,''),
+('2024-01-23 08:30:00', '2024-01-23 17:00:00', 9, 3, 4, 1550000, 330000,''),
+('2024-01-24 07:00:00', '2024-01-25 00:30:00', 10, 4, 5, 2750000, 570000,'');
 
 INSERT INTO tbUsers (nomUser, mdp) VALUES
 ('ESTELLE', 'admin123'),

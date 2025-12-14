@@ -1,30 +1,28 @@
 <?php
 
-use app\controllers\ApiExampleController;
+use app\controllers\UserController;
+use app\controllers\MvtTrajetController;
 use app\middlewares\SecurityHeadersMiddleware;
-use flight\Engine;
 use flight\net\Router;
+use flight\Engine;
 
-/** 
- * @var Router $router 
+/**
+ * @var Router $router
  * @var Engine $app
  */
 
-// This wraps all routes in the group with the SecurityHeadersMiddleware
+session_start();
+
+// SECURED GROUP
 $router->group('', function(Router $router) use ($app) {
 
-	$router->get('/', function() use ($app) {
-		$app->render('welcome', [ 'message' => 'You are gonna do great things!' ]);
-	});
+    /* ---------------- LOGIN ---------------- */
+    $router->get('/login', [UserController::class, 'loginForm']);
+    $router->post('/login', [UserController::class, 'login']);
+    $router->get('/home', [UserController::class, 'home']);
 
-	$router->get('/hello-world/@name', function($name) {
-		echo '<h1>Hello world! Oh hey '.$name.'!</h1>';
-	});
+    /* ------------ MOUVEMENT TRAJET ---------- */
+    $router->get('/mvtTrajet', [MvtTrajetController::class, 'form']);
+    $router->post('/mvtTrajet/save', [MvtTrajetController::class, 'save']);
 
-	$router->group('/api', function() use ($router) {
-		$router->get('/users', [ ApiExampleController::class, 'getUsers' ]);
-		$router->get('/users/@id:[0-9]', [ ApiExampleController::class, 'getUser' ]);
-		$router->post('/users/@id:[0-9]', [ ApiExampleController::class, 'updateUser' ]);
-	});
-	
 }, [ SecurityHeadersMiddleware::class ]);
